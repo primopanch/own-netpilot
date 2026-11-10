@@ -1,17 +1,13 @@
 import React, { useRef } from 'react';
-import { ContextFile, NetworkTopology, NetworkDevice } from '../types/network';
+import { ContextFile, NetworkTopology } from '../types/network';
 import { 
   UploadCloud, 
-  FileText, 
-  Image as ImageIcon, 
   Trash2, 
   Layers, 
   Sparkles, 
   Cpu, 
-  Server, 
   HardDrive, 
   Monitor, 
-  CheckCircle,
   FileCode,
   Network
 } from 'lucide-react';
@@ -140,25 +136,25 @@ export const Sidebar: React.FC<Props> = ({
       {isOpen && (
         <div 
           onClick={onCloseMobile}
-          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-30 lg:hidden"
+          className="fixed inset-0 bg-black/40 backdrop-blur-sm z-30 lg:hidden"
         />
       )}
 
-      <aside className={`fixed lg:static top-0 bottom-0 left-0 z-40 w-80 bg-[#0a0f1d] border-r border-slate-800 flex flex-col transition-transform duration-300 ease-in-out ${
+      <aside className={`fixed lg:static top-0 bottom-0 left-0 z-40 w-80 bg-[#F5F5F3] border-r border-[#E8E8E5] flex flex-col transition-transform duration-300 ease-in-out ${
         isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
       }`}>
         
         {/* Sidebar Header */}
-        <div className="p-4 border-b border-slate-800 flex items-center justify-between">
+        <div className="p-4 border-b border-[#E8E8E5] flex items-center justify-between bg-[#F5F5F3]">
           <div className="flex items-center gap-2">
-            <Layers size={18} className="text-cyan-400" />
-            <h3 className="text-xs font-bold uppercase tracking-wider text-white">
+            <Layers size={17} className="text-[#18181B]" />
+            <h3 className="text-xs font-semibold uppercase tracking-wider text-[#18181B]">
               Panel de Contexto & Topología
             </h3>
           </div>
           <button 
             onClick={onCloseMobile}
-            className="lg:hidden text-slate-400 hover:text-white p-1 rounded-md"
+            className="lg:hidden text-[#71717A] hover:text-[#18181B] p-1 rounded-md"
           >
             ✕
           </button>
@@ -170,10 +166,10 @@ export const Sidebar: React.FC<Props> = ({
           {/* Section 1: Upload Context */}
           <div className="space-y-3">
             <div className="flex items-center justify-between">
-              <span className="text-[11px] font-bold text-slate-300 uppercase tracking-wider">
+              <span className="text-[11px] font-semibold text-[#52525B] uppercase tracking-wider">
                 Adjuntar Archivos / Topologías
               </span>
-              <span className="text-[10px] text-cyan-400 font-mono">
+              <span className="text-[10px] text-[#18181B] font-mono font-medium px-1.5 py-0.5 rounded bg-[#EAEAE8]">
                 {contextFiles.length} adjuntos
               </span>
             </div>
@@ -183,7 +179,7 @@ export const Sidebar: React.FC<Props> = ({
               onDragOver={(e) => e.preventDefault()}
               onDrop={handleDrop}
               onClick={() => fileInputRef.current?.click()}
-              className="border-2 border-dashed border-slate-700 hover:border-cyan-500/70 bg-slate-900/40 hover:bg-cyan-950/20 rounded-xl p-4 text-center cursor-pointer transition-all group"
+              className="border border-dashed border-[#D4D4D8] hover:border-[#18181B] bg-[#FFFFFF] rounded-xl p-4 text-center cursor-pointer transition-all shadow-soft-sm group hover:shadow-soft-md"
             >
               <input
                 ref={fileInputRef}
@@ -193,11 +189,11 @@ export const Sidebar: React.FC<Props> = ({
                 onChange={handleFileChange}
                 className="hidden"
               />
-              <UploadCloud size={24} className="mx-auto text-slate-400 group-hover:text-cyan-400 transition-colors" />
-              <p className="mt-2 text-xs font-medium text-slate-200">
+              <UploadCloud size={22} className="mx-auto text-[#71717A] group-hover:text-[#18181B] transition-colors" />
+              <p className="mt-2 text-xs font-medium text-[#18181B]">
                 Arrastra diagramas o archivos
               </p>
-              <p className="text-[10px] text-slate-500 mt-0.5">
+              <p className="text-[10px] text-[#71717A] mt-0.5">
                 .pkt, .cfg, .ios, .txt o imágenes .png/.jpg
               </p>
             </div>
@@ -208,32 +204,32 @@ export const Sidebar: React.FC<Props> = ({
                 {contextFiles.map((file) => (
                   <div
                     key={file.id}
-                    className="p-2 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-between gap-2 text-xs"
+                    className="p-2.5 rounded-xl bg-[#FFFFFF] border border-[#E8E8E5] shadow-soft-sm flex items-center justify-between gap-2 text-xs"
                   >
                     <div className="flex items-center gap-2 min-w-0">
                       {file.isImage ? (
                         <img
                           src={file.dataUrl}
                           alt={file.name}
-                          className="h-7 w-7 rounded object-cover border border-slate-700 shrink-0"
+                          className="h-7 w-7 rounded-lg object-cover border border-[#E8E8E5] shrink-0"
                         />
                       ) : (
-                        <div className="p-1.5 rounded bg-slate-800 text-cyan-400 shrink-0">
+                        <div className="p-1.5 rounded-lg bg-[#F5F5F3] text-[#18181B] shrink-0">
                           <FileCode size={14} />
                         </div>
                       )}
                       <div className="min-w-0">
-                        <p className="font-medium text-slate-200 truncate text-[11px]">
+                        <p className="font-medium text-[#18181B] truncate text-[11px]">
                           {file.name}
                         </p>
-                        <p className="text-[10px] text-slate-500 font-mono">
+                        <p className="text-[10px] text-[#71717A] font-mono">
                           {formatFileSize(file.size)}
                         </p>
                       </div>
                     </div>
                     <button
                       onClick={() => onRemoveFile(file.id)}
-                      className="text-slate-500 hover:text-red-400 p-1 rounded transition-colors shrink-0"
+                      className="text-[#A1A1AA] hover:text-[#DC2626] p-1 rounded transition-colors shrink-0"
                       title="Eliminar de contexto"
                     >
                       <Trash2 size={13} />
@@ -245,43 +241,43 @@ export const Sidebar: React.FC<Props> = ({
           </div>
 
           {/* Section 2: Active Inventory */}
-          <div className="space-y-3 pt-2 border-t border-slate-800/80">
+          <div className="space-y-3 pt-2 border-t border-[#E8E8E5]">
             <div className="flex items-center justify-between">
-              <span className="text-[11px] font-bold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
-                <Network size={14} className="text-cyan-400" />
+              <span className="text-[11px] font-semibold text-[#52525B] uppercase tracking-wider flex items-center gap-1.5">
+                <Network size={14} className="text-[#18181B]" />
                 Inventario de Equipos ({topology.devices.length})
               </span>
             </div>
 
-            <div className="space-y-1.5">
+            <div className="space-y-2">
               {topology.devices.map((dev) => (
                 <div
                   key={dev.id}
-                  className="p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 hover:border-slate-700 transition-colors"
+                  className="p-3 rounded-xl bg-[#FFFFFF] border border-[#E8E8E5] shadow-soft-sm hover:shadow-soft-md transition-all"
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <span className="p-1 rounded-md bg-slate-800 text-cyan-400">
+                      <span className="p-1 rounded-lg bg-[#F5F5F3] text-[#18181B]">
                         {dev.type === 'router' ? <Cpu size={13} /> : dev.type === 'switch' ? <HardDrive size={13} /> : <Monitor size={13} />}
                       </span>
                       <div>
-                        <span className="text-xs font-bold text-white">{dev.name}</span>
-                        <span className="text-[10px] text-slate-400 ml-1.5 font-mono">{dev.model}</span>
+                        <span className="text-xs font-semibold text-[#18181B]">{dev.name}</span>
+                        <span className="text-[10px] text-[#71717A] ml-1.5 font-mono">{dev.model}</span>
                       </div>
                     </div>
-                    <span className="h-2 w-2 rounded-full bg-emerald-500" />
+                    <span className="h-2 w-2 rounded-full bg-[#16A34A]" />
                   </div>
 
                   {/* Device IPs */}
-                  <div className="mt-1.5 pl-6 text-[10px] font-mono text-slate-400 space-y-0.5">
+                  <div className="mt-2 pl-6 text-[10px] font-mono text-[#71717A] space-y-0.5">
                     {dev.interfaces.filter(i => i.ipAddress).map((i, idx) => (
                       <div key={idx} className="flex items-center justify-between">
-                        <span className="text-cyan-400/80">{i.shortName}:</span>
+                        <span className="text-[#52525B] font-medium">{i.shortName}:</span>
                         <span>{i.ipAddress}</span>
                       </div>
                     ))}
                     {dev.interfaces.filter(i => i.ipAddress).length === 0 && (
-                      <div className="text-slate-600 italic">Capa 2 / Switchport</div>
+                      <div className="text-[#A1A1AA] italic">Capa 2 / Switchport</div>
                     )}
                   </div>
                 </div>
@@ -290,10 +286,10 @@ export const Sidebar: React.FC<Props> = ({
           </div>
 
           {/* Section 3: Pre-built Cisco Lab Templates */}
-          <div className="space-y-3 pt-2 border-t border-slate-800/80">
+          <div className="space-y-3 pt-2 border-t border-[#E8E8E5]">
             <div className="flex items-center justify-between">
-              <span className="text-[11px] font-bold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
-                <Sparkles size={14} className="text-amber-400" />
+              <span className="text-[11px] font-semibold text-[#52525B] uppercase tracking-wider flex items-center gap-1.5">
+                <Sparkles size={14} className="text-[#D97706]" />
                 Plantillas de Laboratorio
               </span>
             </div>
@@ -303,17 +299,17 @@ export const Sidebar: React.FC<Props> = ({
                 <button
                   key={tpl.id}
                   onClick={() => onLoadTemplate(tpl.id)}
-                  className="w-full text-left p-2.5 rounded-xl bg-slate-900/60 hover:bg-cyan-950/30 border border-slate-800 hover:border-cyan-500/40 transition-all group"
+                  className="w-full text-left p-3 rounded-xl bg-[#FFFFFF] hover:bg-[#FAFAF9] border border-[#E8E8E5] hover:border-[#D4D4D8] transition-all group shadow-soft-sm hover:shadow-soft-md"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-semibold text-slate-200 group-hover:text-cyan-300 transition-colors">
+                    <span className="text-xs font-semibold text-[#18181B] group-hover:text-[#000000] transition-colors">
                       {tpl.title}
                     </span>
-                    <span className="text-[9px] font-mono uppercase px-1.5 py-0.5 rounded bg-slate-800 text-cyan-400 border border-slate-700">
+                    <span className="text-[9px] font-mono uppercase px-1.5 py-0.5 rounded-md bg-[#F4F4F5] text-[#52525B] border border-[#E4E4E7]">
                       {tpl.badge}
                     </span>
                   </div>
-                  <p className="text-[10px] text-slate-400 mt-1 line-clamp-2 leading-relaxed">
+                  <p className="text-[11px] text-[#71717A] mt-1.5 line-clamp-2 leading-relaxed">
                     {tpl.desc}
                   </p>
                 </button>
@@ -324,9 +320,9 @@ export const Sidebar: React.FC<Props> = ({
         </div>
 
         {/* Sidebar Footer info */}
-        <div className="p-3 bg-[#080c14] border-t border-slate-800 text-[10px] text-slate-500 flex items-center justify-between">
+        <div className="p-3 bg-[#F5F5F3] border-t border-[#E8E8E5] text-[11px] text-[#71717A] flex items-center justify-between">
           <span>NetPilot AI Copilot</span>
-          <span className="font-mono text-cyan-400">v2.4.0-PT</span>
+          <span className="font-mono text-[#18181B] font-medium">v2.4.0-PT</span>
         </div>
 
       </aside>

@@ -11,7 +11,6 @@ import {
   Cpu, 
   Server, 
   Bot, 
-  Sparkles,
   Zap
 } from 'lucide-react';
 
@@ -103,7 +102,7 @@ export const SettingsModal: React.FC<Props> = ({ isOpen, onClose, settings, onSa
         }
       } catch (err: any) {
         setTestingStatus('error');
-        setTestMessage(`Error de conexión / CORS: ${err.message}. Verifica tu conexión o endpoint proxy.`);
+        setTestMessage(`Error de conexión / CORS: ${err.message}.`);
       }
     } else {
       // Anthropic
@@ -146,25 +145,25 @@ export const SettingsModal: React.FC<Props> = ({ isOpen, onClose, settings, onSa
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
-      <div className="relative w-full max-w-lg bg-[#0c1220] border border-cyan-500/40 rounded-2xl shadow-2xl overflow-hidden text-slate-100 flex flex-col max-h-[92vh]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm animate-in fade-in duration-200">
+      <div className="relative w-full max-w-lg bg-[#FFFFFF] border border-[#E8E8E5] rounded-2xl shadow-soft-xl overflow-hidden text-[#18181B] flex flex-col max-h-[92vh]">
         
         {/* Header */}
-        <div className="px-6 py-4 bg-slate-900 border-b border-slate-800 flex items-center justify-between">
+        <div className="px-6 py-4 bg-[#FFFFFF] border-b border-[#E8E8E5] flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="p-2 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400">
-              <Key size={20} />
+            <div className="p-2 rounded-xl bg-[#F5F5F3] border border-[#E8E8E5] text-[#18181B] shadow-soft-sm">
+              <Key size={18} />
             </div>
             <div>
-              <h2 className="text-base font-bold text-white">Configuración de Proveedor & API Keys</h2>
-              <p className="text-xs text-slate-400">Almacenadas 100% de forma local en tu navegador (localStorage)</p>
+              <h2 className="text-base font-bold text-[#18181B]">Configuración de Proveedor & API Keys</h2>
+              <p className="text-xs text-[#71717A]">Almacenadas 100% de forma local en tu navegador (localStorage)</p>
             </div>
           </div>
-          <button onClick={onClose} className="text-slate-400 hover:text-white p-1 rounded-lg">✕</button>
+          <button onClick={onClose} className="text-[#71717A] hover:text-[#18181B] p-1.5 rounded-lg hover:bg-[#F5F5F3]">✕</button>
         </div>
 
         {/* Provider Switcher Tabs */}
-        <div className="grid grid-cols-2 p-2 bg-[#080d19] border-b border-slate-800 gap-2">
+        <div className="grid grid-cols-2 p-2 bg-[#F5F5F3] border-b border-[#E8E8E5] gap-2">
           <button
             type="button"
             onClick={() => {
@@ -173,8 +172,8 @@ export const SettingsModal: React.FC<Props> = ({ isOpen, onClose, settings, onSa
             }}
             className={`flex items-center justify-center gap-2 py-2 px-3 rounded-xl text-xs font-semibold transition-all ${
               provider === 'anthropic'
-                ? 'bg-gradient-to-r from-cyan-600 to-blue-600 text-white shadow-md shadow-cyan-900/30'
-                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
+                ? 'bg-[#18181B] text-white shadow-soft-sm'
+                : 'text-[#71717A] hover:text-[#18181B] hover:bg-[#EAEAE8]'
             }`}
           >
             <Bot size={15} />
@@ -189,22 +188,22 @@ export const SettingsModal: React.FC<Props> = ({ isOpen, onClose, settings, onSa
             }}
             className={`flex items-center justify-center gap-2 py-2 px-3 rounded-xl text-xs font-semibold transition-all ${
               provider === 'deepseek'
-                ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md shadow-indigo-900/30'
-                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
+                ? 'bg-[#18181B] text-white shadow-soft-sm'
+                : 'text-[#71717A] hover:text-[#18181B] hover:bg-[#EAEAE8]'
             }`}
           >
-            <Zap size={15} className="text-amber-400" />
+            <Zap size={15} className="text-[#D97706]" />
             DeepSeek (V3 & R1)
           </button>
         </div>
 
         {/* Body */}
-        <div className="p-6 space-y-5 text-xs overflow-y-auto flex-1">
+        <div className="p-6 space-y-5 text-xs overflow-y-auto flex-1 bg-[#FFFFFF]">
           
           {/* Security notice */}
-          <div className="p-3 rounded-xl bg-emerald-950/30 border border-emerald-800/40 flex items-start gap-2.5">
-            <ShieldCheck size={18} className="text-emerald-400 shrink-0 mt-0.5" />
-            <div className="text-slate-300 leading-relaxed text-[11px]">
+          <div className="p-3.5 rounded-xl bg-[#F0FDF4] border border-[#DCFCE7] flex items-start gap-2.5">
+            <ShieldCheck size={18} className="text-[#16A34A] shrink-0 mt-0.5" />
+            <div className="text-[#15803D] leading-relaxed text-[11px]">
               <strong>Almacenamiento Local Seguro:</strong> Tus claves de Anthropic y DeepSeek residen exclusivamente en el <code>localStorage</code> de este dispositivo y viajan encriptadas directo al proveedor seleccionado.
             </div>
           </div>
@@ -212,17 +211,16 @@ export const SettingsModal: React.FC<Props> = ({ isOpen, onClose, settings, onSa
           {/* TAB 1: Anthropic Form */}
           {provider === 'anthropic' && (
             <div className="space-y-4 animate-in fade-in duration-150">
-              {/* API Key field */}
               <div className="space-y-1.5">
                 <div className="flex items-center justify-between">
-                  <label className="font-semibold text-slate-200 flex items-center gap-1.5">
+                  <label className="font-semibold text-[#18181B] flex items-center gap-1.5">
                     Anthropic API Key (Claude)
                   </label>
                   {apiKey && (
                     <button
                       type="button"
                       onClick={() => handleClearKey('anthropic')}
-                      className="text-[10px] text-red-400 hover:text-red-300"
+                      className="text-[10px] text-[#DC2626] hover:underline"
                     >
                       Eliminar clave
                     </button>
@@ -234,32 +232,31 @@ export const SettingsModal: React.FC<Props> = ({ isOpen, onClose, settings, onSa
                     value={apiKey}
                     onChange={(e) => setApiKey(e.target.value)}
                     placeholder="sk-ant-api03-..."
-                    className="w-full pl-3 pr-20 py-2.5 rounded-xl bg-slate-900 border border-slate-700 focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-400 text-slate-100 font-mono text-xs placeholder-slate-500"
+                    className="w-full pl-3 pr-20 py-2.5 rounded-xl bg-[#FFFFFF] border border-[#D4D4D8] focus:border-[#18181B] focus:outline-none text-[#18181B] font-mono text-xs placeholder-[#A1A1AA] shadow-soft-sm"
                   />
                   <button
                     type="button"
                     onClick={() => setShowKey(!showKey)}
-                    className="absolute right-2.5 text-slate-400 hover:text-slate-200 p-1"
+                    className="absolute right-2.5 text-[#71717A] hover:text-[#18181B] p-1"
                     title={showKey ? "Ocultar" : "Mostrar"}
                   >
                     {showKey ? <EyeOff size={16} /> : <Eye size={16} />}
                   </button>
                 </div>
-                <p className="text-[10px] text-slate-400">
-                  Obtén tu clave en <a href="https://console.anthropic.com/" target="_blank" rel="noreferrer" className="text-cyan-400 underline">console.anthropic.com</a>
+                <p className="text-[10px] text-[#71717A]">
+                  Obtén tu clave en <a href="https://console.anthropic.com/" target="_blank" rel="noreferrer" className="text-[#2563EB] underline">console.anthropic.com</a>
                 </p>
               </div>
 
-              {/* Model selector */}
               <div className="space-y-1.5">
-                <label className="font-semibold text-slate-200 flex items-center gap-1.5">
-                  <Cpu size={14} className="text-cyan-400" />
+                <label className="font-semibold text-[#18181B] flex items-center gap-1.5">
+                  <Cpu size={14} className="text-[#71717A]" />
                   Modelo de Claude
                 </label>
                 <select
                   value={model}
                   onChange={(e) => setModel(e.target.value)}
-                  className="w-full px-3 py-2.5 rounded-xl bg-slate-900 border border-slate-700 focus:border-cyan-400 focus:outline-none text-slate-100 text-xs"
+                  className="w-full px-3 py-2.5 rounded-xl bg-[#FFFFFF] border border-[#D4D4D8] focus:border-[#18181B] focus:outline-none text-[#18181B] text-xs shadow-soft-sm"
                 >
                   <option value="claude-3-5-sonnet-20241022">Claude 3.5 Sonnet (Recomendado para Cisco)</option>
                   <option value="claude-3-7-sonnet-20250219">Claude 3.7 Sonnet (Razonamiento híbrido)</option>
@@ -267,10 +264,9 @@ export const SettingsModal: React.FC<Props> = ({ isOpen, onClose, settings, onSa
                 </select>
               </div>
 
-              {/* Base URL */}
               <div className="space-y-1.5">
-                <label className="font-semibold text-slate-200 flex items-center gap-1.5">
-                  <Server size={14} className="text-slate-400" />
+                <label className="font-semibold text-[#18181B] flex items-center gap-1.5">
+                  <Server size={14} className="text-[#71717A]" />
                   URL Base Anthropic
                 </label>
                 <input
@@ -278,7 +274,7 @@ export const SettingsModal: React.FC<Props> = ({ isOpen, onClose, settings, onSa
                   value={baseUrl}
                   onChange={(e) => setBaseUrl(e.target.value)}
                   placeholder="https://api.anthropic.com/v1/messages"
-                  className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-slate-300 font-mono text-[11px]"
+                  className="w-full px-3 py-2 rounded-xl bg-[#FFFFFF] border border-[#D4D4D8] text-[#52525B] font-mono text-[11px] shadow-soft-sm"
                 />
               </div>
             </div>
@@ -287,18 +283,17 @@ export const SettingsModal: React.FC<Props> = ({ isOpen, onClose, settings, onSa
           {/* TAB 2: DeepSeek Form */}
           {provider === 'deepseek' && (
             <div className="space-y-4 animate-in fade-in duration-150">
-              {/* DeepSeek API Key */}
               <div className="space-y-1.5">
                 <div className="flex items-center justify-between">
-                  <label className="font-semibold text-slate-200 flex items-center gap-1.5">
-                    <Zap size={14} className="text-amber-400" />
+                  <label className="font-semibold text-[#18181B] flex items-center gap-1.5">
+                    <Zap size={14} className="text-[#D97706]" />
                     DeepSeek API Key
                   </label>
                   {deepseekApiKey && (
                     <button
                       type="button"
                       onClick={() => handleClearKey('deepseek')}
-                      className="text-[10px] text-red-400 hover:text-red-300"
+                      className="text-[10px] text-[#DC2626] hover:underline"
                     >
                       Eliminar clave
                     </button>
@@ -310,45 +305,43 @@ export const SettingsModal: React.FC<Props> = ({ isOpen, onClose, settings, onSa
                     value={deepseekApiKey}
                     onChange={(e) => setDeepseekApiKey(e.target.value)}
                     placeholder="sk-..."
-                    className="w-full pl-3 pr-20 py-2.5 rounded-xl bg-slate-900 border border-slate-700 focus:border-indigo-400 focus:outline-none focus:ring-1 focus:ring-indigo-400 text-slate-100 font-mono text-xs placeholder-slate-500"
+                    className="w-full pl-3 pr-20 py-2.5 rounded-xl bg-[#FFFFFF] border border-[#D4D4D8] focus:border-[#18181B] focus:outline-none text-[#18181B] font-mono text-xs placeholder-[#A1A1AA] shadow-soft-sm"
                   />
                   <button
                     type="button"
                     onClick={() => setShowDeepseekKey(!showDeepseekKey)}
-                    className="absolute right-2.5 text-slate-400 hover:text-slate-200 p-1"
+                    className="absolute right-2.5 text-[#71717A] hover:text-[#18181B] p-1"
                     title={showDeepseekKey ? "Ocultar" : "Mostrar"}
                   >
                     {showDeepseekKey ? <EyeOff size={16} /> : <Eye size={16} />}
                   </button>
                 </div>
-                <p className="text-[10px] text-slate-400">
-                  Obtén tu clave de DeepSeek en <a href="https://platform.deepseek.com/api_keys" target="_blank" rel="noreferrer" className="text-indigo-400 underline">platform.deepseek.com/api_keys</a>
+                <p className="text-[10px] text-[#71717A]">
+                  Obtén tu clave de DeepSeek en <a href="https://platform.deepseek.com/api_keys" target="_blank" rel="noreferrer" className="text-[#2563EB] underline">platform.deepseek.com/api_keys</a>
                 </p>
               </div>
 
-              {/* DeepSeek Model Selector */}
               <div className="space-y-1.5">
-                <label className="font-semibold text-slate-200 flex items-center gap-1.5">
-                  <Cpu size={14} className="text-indigo-400" />
+                <label className="font-semibold text-[#18181B] flex items-center gap-1.5">
+                  <Cpu size={14} className="text-[#71717A]" />
                   Modelo DeepSeek
                 </label>
                 <select
                   value={deepseekModel}
                   onChange={(e) => setDeepseekModel(e.target.value)}
-                  className="w-full px-3 py-2.5 rounded-xl bg-slate-900 border border-slate-700 focus:border-indigo-400 focus:outline-none text-slate-100 text-xs"
+                  className="w-full px-3 py-2.5 rounded-xl bg-[#FFFFFF] border border-[#D4D4D8] focus:border-[#18181B] focus:outline-none text-[#18181B] text-xs shadow-soft-sm"
                 >
                   <option value="deepseek-chat">DeepSeek-V3 (deepseek-chat) - Velocidad y programación</option>
                   <option value="deepseek-reasoner">DeepSeek-R1 (deepseek-reasoner) - Razonamiento profundo para topologías</option>
                 </select>
-                <p className="text-[10px] text-slate-400">
+                <p className="text-[10px] text-[#71717A]">
                   <strong>DeepSeek-R1</strong> expone su cadena de pensamiento completa explicando el diagnóstico de enrutamiento y comandos Cisco IOS.
                 </p>
               </div>
 
-              {/* DeepSeek Base URL */}
               <div className="space-y-1.5">
-                <label className="font-semibold text-slate-200 flex items-center gap-1.5">
-                  <Server size={14} className="text-slate-400" />
+                <label className="font-semibold text-[#18181B] flex items-center gap-1.5">
+                  <Server size={14} className="text-[#71717A]" />
                   Endpoint API DeepSeek
                 </label>
                 <input
@@ -356,7 +349,7 @@ export const SettingsModal: React.FC<Props> = ({ isOpen, onClose, settings, onSa
                   value={deepseekBaseUrl}
                   onChange={(e) => setDeepseekBaseUrl(e.target.value)}
                   placeholder="https://api.deepseek.com"
-                  className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-slate-300 font-mono text-[11px]"
+                  className="w-full px-3 py-2 rounded-xl bg-[#FFFFFF] border border-[#D4D4D8] text-[#52525B] font-mono text-[11px] shadow-soft-sm"
                 />
               </div>
             </div>
@@ -365,13 +358,13 @@ export const SettingsModal: React.FC<Props> = ({ isOpen, onClose, settings, onSa
           {/* Test connection results */}
           {testingStatus !== 'idle' && (
             <div className={`p-3 rounded-xl border flex items-start gap-2 ${
-              testingStatus === 'testing' ? 'bg-cyan-950/30 border-cyan-800 text-cyan-300' :
-              testingStatus === 'success' ? 'bg-emerald-950/40 border-emerald-700 text-emerald-300' :
-              'bg-red-950/40 border-red-800 text-red-300'
+              testingStatus === 'testing' ? 'bg-[#F4F4F5] border-[#E4E4E7] text-[#52525B]' :
+              testingStatus === 'success' ? 'bg-[#F0FDF4] border-[#DCFCE7] text-[#15803D]' :
+              'bg-[#FEF2F2] border-[#FEE2E2] text-[#DC2626]'
             }`}>
               {testingStatus === 'testing' ? <RefreshCw size={15} className="animate-spin mt-0.5 shrink-0" /> :
-               testingStatus === 'success' ? <CheckCircle2 size={15} className="shrink-0 text-emerald-400 mt-0.5" /> :
-               <AlertCircle size={15} className="shrink-0 text-red-400 mt-0.5" />}
+               testingStatus === 'success' ? <CheckCircle2 size={15} className="shrink-0 text-[#16A34A] mt-0.5" /> :
+               <AlertCircle size={15} className="shrink-0 text-[#DC2626] mt-0.5" />}
               <span className="text-[11px] leading-relaxed">{testMessage}</span>
             </div>
           )}
@@ -382,7 +375,7 @@ export const SettingsModal: React.FC<Props> = ({ isOpen, onClose, settings, onSa
               type="button"
               onClick={testConnection}
               disabled={testingStatus === 'testing'}
-              className="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-medium text-xs flex items-center justify-center gap-2 transition-colors"
+              className="w-full py-2.5 rounded-xl bg-[#FFFFFF] hover:bg-[#F5F5F3] border border-[#E8E8E5] text-[#18181B] font-medium text-xs flex items-center justify-center gap-2 transition-colors shadow-soft-sm"
             >
               <RefreshCw size={14} className={testingStatus === 'testing' ? 'animate-spin' : ''} />
               Probar Conexión con {provider === 'deepseek' ? 'DeepSeek' : 'Anthropic'}
@@ -391,16 +384,16 @@ export const SettingsModal: React.FC<Props> = ({ isOpen, onClose, settings, onSa
         </div>
 
         {/* Footer */}
-        <div className="px-6 py-3.5 bg-slate-950 border-t border-slate-800 flex items-center justify-between">
+        <div className="px-6 py-3.5 bg-[#FFFFFF] border-t border-[#E8E8E5] flex items-center justify-between">
           <button
             onClick={onClose}
-            className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium text-xs"
+            className="px-4 py-2 rounded-xl bg-[#F5F5F3] hover:bg-[#EAEAE8] border border-[#E8E8E5] text-[#18181B] font-medium text-xs transition-colors"
           >
             Cancelar
           </button>
           <button
             onClick={handleSave}
-            className="px-5 py-2 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs shadow-lg shadow-cyan-500/25 transition-all"
+            className="px-5 py-2 rounded-xl bg-[#18181B] hover:bg-[#27272A] text-white font-medium text-xs shadow-soft-sm transition-all"
           >
             Guardar Configuración
           </button>

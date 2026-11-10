@@ -317,3 +317,56 @@
 22:17:06 start run command
 22:17:06 done  run command: Created At: 2026-11-10T14:17:06-08:00 Completed At: 2026-11-10T14:17:06-08:00 Command exited with code 0. Command output: On branch main Your branch is up to date with 'origin/main'. Untracked files
 22:17:12 said  He añadido el soporte completo para configurar e importar claves de API de modelos de DeepSeek (tanto DeepSeek-V3 para código rápido como DeepSeek-R1 con razonamiento paso a paso) guardadas de forma segura y local en tu navegador. Ahora puedes alternar fácilmente entre Anthropic (Claude) y DeepSeek desde el panel de preferencias, probar la conexión de tu clave en un clic y consultar el modelo activo en la barra superior. He recompilado la aplicación con éxito y todo el flujo de chat y exportación a Packet Tracer funciona de manera fluida con ambos proveedores.
+--- Craft Anything 0.4.0: a run started 2026-11-10 22:22:10 UTC ---
+22:22:10 stage Getting the builder ready…
+22:22:10 stage Improving the build…
+22:22:11 note  Asking Antigravity…
+22:22:12 note  Stopped.
+22:22:12 note  The builder's turn ended (0 tokens in, 0 out)
+22:22:12 stage Paused.
+--- Craft Anything 0.4.0: a run started 2026-11-10 22:22:22 UTC ---
+22:22:22 stage Getting the builder ready…
+22:22:22 stage Improving the build…
+22:22:22 note  Asking Antigravity…
+22:22:29 note  Stopped.
+22:22:29 note  The builder's turn ended (0 tokens in, 0 out)
+22:22:29 stage Paused.
+--- Craft Anything 0.4.0: a run started 2026-11-10 22:23:10 UTC ---
+22:23:10 stage Getting the builder ready…
+22:23:10 stage Improving the build…
+22:23:10 note  Asking Antigravity…
+22:23:16 start read file
+22:23:16 done  read file
+22:23:21 start read file
+22:23:21 done  read file
+22:24:01 start write file
+22:24:01 done  write file
+22:24:20 start write file
+22:24:20 done  write file
+22:24:46 start write file
+22:24:46 done  write file
+22:25:19 start write file
+22:25:19 done  write file
+22:25:46 start write file
+22:25:46 done  write file
+22:26:23 start write file
+22:26:23 done  write file
+22:26:57 start write file
+22:26:57 done  write file
+22:27:08 start write file
+22:27:08 done  write file
+22:27:13 start read file
+22:27:13 done  read file: 242 lines, 9012 bytes
+22:27:18 start edit file
+22:27:18 done  edit file
+22:27:23 start read file
+22:27:23 done  read file: 46 lines, 871 bytes
+22:27:29 start write file
+22:27:29 done  write file
+22:27:35 start run command
+22:27:37 done  run command (2 s): Created At: 2026-11-10T14:27:34-08:00 Completed At: 2026-11-10T14:27:37-08:00 Command exited with code 0. Command output: > app@1.0.0 build > vite build vite v8.3.7 building client environment for
+22:27:45 start read file
+22:27:45 done  read file: 15 lines, 1019 bytes
+22:27:46 out   error: Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 75h18m21s.
+22:27:46 out   AGY_ERROR: {"short_error":"RESOURCE_EXHAUSTED (code 429): Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 75h18m21s.","status":"RESOURCE_EXHAUSTED","error_code":429,"code_kind":"http","retryable":true,"error_id":"2eebe3b9-df34-4a93-8a1c-f176fec3c766-294"}
+22:27:46 ERROR Antigravity: Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 75h18m21s.

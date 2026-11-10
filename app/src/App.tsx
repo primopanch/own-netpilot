@@ -176,7 +176,7 @@ He preparado como ejemplo activo la topología de **Inter-VLAN Routing (Router-o
   }
 
   return (
-    <div className="flex flex-col h-screen w-screen overflow-hidden bg-[#080c14] text-slate-100">
+    <div className="flex flex-col h-screen w-screen overflow-hidden bg-[#F9F9F8] text-[#18181B] font-sans">
       
       {/* Top Header */}
       <Header
