@@ -1,0 +1,541 @@
+{
+  "a11y": {
+    "images_without_alt": 0,
+    "landmarks": {
+      "contentinfo": 1,
+      "main": 1
+    },
+    "lang": "es-es",
+    "unnamed_controls": 0,
+    "unnamed_examples": []
+  },
+  "assets": {
+    "images": [
+      {
+        "h": 32,
+        "w": 32
+      }
+    ]
+  },
+  "design": {
+    "backgrounds": [
+      {
+        "count": 3,
+        "value": "#ffffff"
+      },
+      {
+        "count": 1,
+        "value": "#080c14"
+      },
+      {
+        "count": 1,
+        "value": "#fafafa"
+      },
+      {
+        "count": 1,
+        "value": "#0284c7"
+      }
+    ],
+    "font_sizes": [
+      {
+        "count": 5,
+        "value": "12px"
+      },
+      {
+        "count": 2,
+        "value": "13px"
+      },
+      {
+        "count": 1,
+        "value": "40px"
+      },
+      {
+        "count": 1,
+        "value": "24px"
+      },
+      {
+        "count": 1,
+        "value": "16px"
+      },
+      {
+        "count": 1,
+        "value": "14px"
+      },
+      {
+        "count": 1,
+        "value": "9px"
+      },
+      {
+        "count": 1,
+        "value": "8px"
+      }
+    ],
+    "font_weights": [
+      {
+        "count": 8,
+        "value": "400"
+      },
+      {
+        "count": 2,
+        "value": "500"
+      },
+      {
+        "count": 2,
+        "value": "600"
+      },
+      {
+        "count": 1,
+        "value": "700"
+      }
+    ],
+    "fonts": [
+      {
+        "count": 12,
+        "value": "system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\""
+      },
+      {
+        "count": 1,
+        "value": "monospace"
+      }
+    ],
+    "max_widths": [
+      {
+        "count": 3,
+        "value": "960px"
+      },
+      {
+        "count": 1,
+        "value": "896px"
+      }
+    ],
+    "radii": [
+      {
+        "count": 1,
+        "value": "4px"
+      },
+      {
+        "count": 1,
+        "value": "3px"
+      },
+      {
+        "count": 1,
+        "value": "6px"
+      }
+    ],
+    "shadows": [
+      {
+        "count": 1,
+        "value": "rgba(0, 0, 0, 0.05) 0px 1px 2px 0px"
+      },
+      {
+        "count": 1,
+        "value": "rgba(0, 0, 0, 0.1) 0px 1px 3px 0px"
+      }
+    ],
+    "spacing": [
+      {
+        "count": 8,
+        "value": "8px"
+      },
+      {
+        "count": 6,
+        "value": "16px"
+      },
+      {
+        "count": 3,
+        "value": "32px"
+      },
+      {
+        "count": 3,
+        "value": "24px"
+      },
+      {
+        "count": 2,
+        "value": "12px"
+      },
+      {
+        "count": 1,
+        "value": "128px"
+      },
+      {
+        "count": 1,
+        "value": "1px"
+      },
+      {
+        "count": 1,
+        "value": "4px"
+      }
+    ],
+    "text_colors": [
+      {
+        "count": 8,
+        "value": "#313131"
+      },
+      {
+        "count": 2,
+        "value": "#ffffff"
+      },
+      {
+        "count": 2,
+        "value": "#0000ee"
+      },
+      {
+        "count": 1,
+        "value": "#6b7280"
+      }
+    ]
+  },
+  "forms": [],
+  "headings": [
+    {
+      "level": 1,
+      "text": "accounts.netpilot.io"
+    },
+    {
+      "level": 2,
+      "text": "Verificación de seguridad en curso"
+    },
+    {
+      "level": 2,
+      "text": "Verificación correcta. Esperando a que accounts.netpilot.io responda"
+    }
+  ],
+  "lang": "es-es",
+  "layouts": [
+    {
+      "blocks": [
+        {
+          "column": {
+            "max_w": 960,
+            "pad": [
+              32,
+              32
+            ],
+            "w": 960,
+            "x": 240
+          },
+          "h": 829,
+          "heading": "accounts.netpilot.io",
+          "pad": [
+            128,
+            32,
+            0,
+            32
+          ],
+          "per_row": 1,
+          "tag": "main",
+          "w": 960,
+          "y": 0
+        },
+        {
+          "column": {
+            "max_w": 960,
+            "pad": [
+              16,
+              16
+            ],
+            "w": 960,
+            "x": 240
+          },
+          "h": 70,
+          "pad": [
+            8,
+            16,
+            8,
+            16
+          ],
+          "per_row": 1,
+          "tag": "footer",
+          "w": 960,
+          "y": 830
+        }
+      ],
+      "page_h": 900,
+      "page_w": 1440,
+      "type": {
+        "body": 16,
+        "h1": 40,
+        "h2": 24,
+        "h3": 0
+      },
+      "width": 1440
+    },
+    {
+      "blocks": [
+        {
+          "column": {
+            "max_w": 960,
+            "pad": [
+              32,
+              32
+            ],
+            "w": 768,
+            "x": 0
+          },
+          "h": 829,
+          "heading": "accounts.netpilot.io",
+          "pad": [
+            128,
+            32,
+            0,
+            32
+          ],
+          "per_row": 1,
+          "tag": "main",
+          "w": 768,
+          "y": 0
+        },
+        {
+          "column": {
+            "max_w": 960,
+            "pad": [
+              16,
+              16
+            ],
+            "w": 768,
+            "x": 0
+          },
+          "h": 70,
+          "pad": [
+            8,
+            16,
+            8,
+            16
+          ],
+          "per_row": 1,
+          "tag": "footer",
+          "w": 768,
+          "y": 830
+        }
+      ],
+      "page_h": 900,
+      "page_w": 768,
+      "type": {
+        "body": 16,
+        "h1": 40,
+        "h2": 24,
+        "h3": 0
+      },
+      "width": 768
+    },
+    {
+      "blocks": [
+        {
+          "column": {
+            "max_w": 960,
+            "pad": [
+              32,
+              32
+            ],
+            "w": 390,
+            "x": 0
+          },
+          "h": 829,
+          "heading": "accounts.netpilot.io",
+          "pad": [
+            128,
+            32,
+            0,
+            32
+          ],
+          "per_row": 1,
+          "tag": "main",
+          "w": 390,
+          "y": 0
+        },
+        {
+          "column": {
+            "max_w": 960,
+            "pad": [
+              16,
+              16
+            ],
+            "w": 390,
+            "x": 0
+          },
+          "h": 70,
+          "pad": [
+            8,
+            16,
+            8,
+            16
+          ],
+          "per_row": 1,
+          "tag": "footer",
+          "w": 390,
+          "y": 830
+        }
+      ],
+      "page_h": 900,
+      "page_w": 390,
+      "type": {
+        "body": 16,
+        "h1": 40,
+        "h2": 24,
+        "h3": 0
+      },
+      "width": 390
+    }
+  ],
+  "links": [
+    {
+      "href": "https://www.cloudflare.com/",
+      "text": "Cloudflare"
+    },
+    {
+      "href": "https://www.cloudflare.com/es-es/privacypolicy/",
+      "text": "Privacidad"
+    }
+  ],
+  "outline": [
+    {
+      "box": {
+        "h": 829,
+        "w": 960,
+        "x": 240,
+        "y": 0
+      },
+      "color": "#313131",
+      "depth": 4,
+      "display": "block",
+      "font": "16px 400",
+      "role": "main",
+      "tag": "main"
+    },
+    {
+      "alt": "Ícono para accounts.netpilot.io",
+      "box": {
+        "h": 32,
+        "w": 32,
+        "x": 272,
+        "y": 137
+      },
+      "color": "#313131",
+      "depth": 6,
+      "font": "16px 400",
+      "src": "data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M25.6 19.2C24.4 22.8 21 25.6 16.8 25.6C11.5 25.6 7.2 21.3 7.2 16C7.2 10.7 11.5 6.4 16.8 6.4C21 6.4 24.4 9.2 25.6 12.8' stroke='%234F46E5' stroke-width='4.8' stroke-linecap='round'/%3E%3Ccircle cx='25.6' cy='16' r='2.4' fill='%233B82F6'/%3E%3C/svg%3E",
+      "tag": "img"
+    },
+    {
+      "box": {
+        "h": 50,
+        "w": 357,
+        "x": 328,
+        "y": 128
+      },
+      "color": "#313131",
+      "depth": 6,
+      "font": "40px 600",
+      "tag": "h1",
+      "text": "accounts.netpilot.io"
+    },
+    {
+      "box": {
+        "h": 30,
+        "w": 896,
+        "x": 272,
+        "y": 186
+      },
+      "color": "#313131",
+      "depth": 6,
+      "font": "24px 600",
+      "id": "_f61f2a78af738bf87d103943",
+      "tag": "h2",
+      "text": "Verificación de seguridad en curso"
+    },
+    {
+      "box": {
+        "h": 48,
+        "w": 896,
+        "x": 272,
+        "y": 224
+      },
+      "color": "#313131",
+      "depth": 5,
+      "font": "16px 400",
+      "id": "_f1085217e8266383517a0dd3",
+      "tag": "p",
+      "text": "Este sitio web utiliza un servicio de seguridad para protegerse contra bots maliciosos. Esta página se muestra mientras el sitio web verifica que tú no eres un bot."
+    },
+    {
+      "box": {
+        "h": 20,
+        "w": 40,
+        "x": 504,
+        "y": 307
+      },
+      "color": "#313131",
+      "depth": 7,
+      "font": "16px 400",
+      "tag": "svg"
+    },
+    {
+      "background": "#0284c7",
+      "box": {
+        "h": 36,
+        "w": 332,
+        "x": 272,
+        "y": 393
+      },
+      "color": "#ffffff",
+      "depth": 6,
+      "font": "13px 500",
+      "tag": "button",
+      "text": "Acceder a NetPilot Copilot (Cisco Packet Tracer) →"
+    },
+    {
+      "box": {
+        "h": 70,
+        "w": 960,
+        "x": 240,
+        "y": 830
+      },
+      "color": "#313131",
+      "depth": 4,
+      "display": "flex",
+      "flex": "column",
+      "font": "12px 400",
+      "role": "contentinfo",
+      "tag": "footer"
+    },
+    {
+      "box": {
+        "h": 16,
+        "w": 54,
+        "x": 737,
+        "y": 869
+      },
+      "color": "#0000ee",
+      "depth": 6,
+      "font": "12px 400",
+      "href": "https://www.cloudflare.com/",
+      "tag": "a",
+      "text": "Cloudflare"
+    },
+    {
+      "box": {
+        "h": 16,
+        "w": 54,
+        "x": 801,
+        "y": 869
+      },
+      "color": "#0000ee",
+      "depth": 6,
+      "font": "12px 400",
+      "href": "https://www.cloudflare.com/es-es/privacypolicy/",
+      "tag": "a",
+      "text": "Privacidad"
+    }
+  ],
+  "page": {
+    "h": 900,
+    "w": 1440
+  },
+  "text": "accounts.netpilot.io Verificación de seguridad en curso Este sitio web utiliza un servicio de seguridad para protegerse contra bots maliciosos. Esta página se muestra mientras el sitio web verifica que tú no eres un bot. Verifique que es un ser humano CLOUDFLARE Privacidad • Ayuda Acceder a NetPilot Copilot (Cisco Packet Tracer) → Ray ID: a5883963888c4961 Rendimiento y seguridad de Cloudflare | Privacidad",
+  "title": "Un momento…",
+  "url": "http://127.0.0.1:53995/",
+  "viewport": {
+    "h": 900,
+    "w": 1440
+  }
+}

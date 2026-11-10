@@ -1,0 +1,210 @@
+{
+  "id": "ev_48334e664d0ba45273123e56da83b692795f77a950a1c64f6fc497510a8dc671",
+  "subject": {
+    "kind": "website",
+    "name": "http://127.0.0.1:63081/"
+  },
+  "operation": "web_site_capture",
+  "params": {
+    "include_html": false,
+    "max_height": 12000,
+    "noise_pass": false,
+    "visitor_view": false,
+    "widths": [
+      1440,
+      768,
+      390
+    ]
+  },
+  "result": {
+    "counts": {
+      "forms": 0,
+      "headings": 3,
+      "images": 1,
+      "links": 2,
+      "outline": 8
+    },
+    "design": {
+      "backgrounds": [
+        {
+          "count": 2,
+          "value": "#ffffff"
+        },
+        {
+          "count": 1,
+          "value": "#080c14"
+        }
+      ],
+      "css_variables": {},
+      "font_faces": [],
+      "font_sizes": [
+        {
+          "count": 5,
+          "value": "12px"
+        },
+        {
+          "count": 1,
+          "value": "40px"
+        },
+        {
+          "count": 1,
+          "value": "24px"
+        },
+        {
+          "count": 1,
+          "value": "16px"
+        }
+      ],
+      "font_weights": [
+        {
+          "count": 6,
+          "value": "400"
+        },
+        {
+          "count": 2,
+          "value": "600"
+        }
+      ],
+      "fonts": [
+        {
+          "count": 7,
+          "value": "system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\""
+        },
+        {
+          "count": 1,
+          "value": "monospace"
+        }
+      ],
+      "max_widths": [
+        {
+          "count": 3,
+          "value": "960px"
+        },
+        {
+          "count": 1,
+          "value": "896px"
+        }
+      ],
+      "radii": [
+        {
+          "count": 1,
+          "value": "4px"
+        }
+      ],
+      "shadows": [],
+      "spacing": [
+        {
+          "count": 4,
+          "value": "8px"
+        },
+        {
+          "count": 3,
+          "value": "24px"
+        },
+        {
+          "count": 2,
+          "value": "32px"
+        },
+        {
+          "count": 2,
+          "value": "16px"
+        },
+        {
+          "count": 1,
+          "value": "128px"
+        },
+        {
+          "count": 1,
+          "value": "9px"
+        },
+        {
+          "count": 1,
+          "value": "4px"
+        },
+        {
+          "count": 1,
+          "value": "10px"
+        }
+      ],
+      "text_colors": [
+        {
+          "count": 6,
+          "value": "#313131"
+        },
+        {
+          "count": 2,
+          "value": "#0000ee"
+        }
+      ]
+    },
+    "files": [
+      "README.md",
+      "capture.json"
+    ],
+    "html_bytes": 0,
+    "output_directory": "C:\\Users\\en5ho\\OneDrive\\Desktop\\own-netpilot\\checks\\round-3",
+    "screenshots": [
+      {
+        "css_width": 1440,
+        "cut": false,
+        "file": "screenshot-1440.png",
+        "height": 900,
+        "sha256": "da81cdf7bc49524cf14fd1a34961210e832dc6354ab90e85d2baa183ffb1e98f",
+        "width": 1440
+      },
+      {
+        "css_width": 768,
+        "cut": false,
+        "file": "screenshot-768.png",
+        "height": 900,
+        "sha256": "4eeaa9cce603174e758e46ea196e7eed656c15caf3c2c9a097f5cb9602b3379f",
+        "width": 768
+      },
+      {
+        "css_width": 390,
+        "cut": false,
+        "file": "screenshot-390.png",
+        "height": 900,
+        "sha256": "6cf6fd7141c2a6c0add7f3717c23d90988e3f9b5e9131421643a207f245c615c",
+        "width": 390
+      }
+    ],
+    "title": "Un momento…",
+    "url": "http://127.0.0.1:63081/"
+  },
+  "summary": "Captured http://127.0.0.1:63081/: 3 screenshot(s), 8 outline items, 3 headings, 1 images, 2 links, 0 forms → C:\\Users\\en5ho\\OneDrive\\Desktop\\own-netpilot\\checks\\round-3.",
+  "confidence": "observed",
+  "authority": "our-run",
+  "environment": {
+    "clean_room": false,
+    "engine": "cdp",
+    "engine_version": "1.3",
+    "host": "windows-x86_64"
+  },
+  "limitations": [
+    {
+      "code": "one_state",
+      "message": "One state of the page: menus, dialogs and content behind interactions are not opened."
+    },
+    {
+      "code": "cross_origin_css",
+      "message": "CSS custom properties and breakpoints from cross-origin stylesheets can't be read."
+    }
+  ],
+  "coverage": {
+    "status": "complete",
+    "examined": 3,
+    "total": 3
+  },
+  "locations": [
+    {
+      "kind": "url",
+      "value": "http://127.0.0.1:63081/"
+    },
+    {
+      "kind": "path",
+      "value": "C:\\Users\\en5ho\\OneDrive\\Desktop\\own-netpilot\\checks\\round-3"
+    }
+  ],
+  "links": []
+}

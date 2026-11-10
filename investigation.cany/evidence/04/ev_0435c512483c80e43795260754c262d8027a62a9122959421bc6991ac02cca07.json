@@ -1,0 +1,57 @@
+{
+  "id": "ev_0435c512483c80e43795260754c262d8027a62a9122959421bc6991ac02cca07",
+  "subject": {
+    "kind": "website",
+    "name": "https://accounts.netpilot.io/sign-in"
+  },
+  "operation": "web_site_open",
+  "params": {
+    "height": 900,
+    "url": "https://accounts.netpilot.io/sign-in",
+    "width": 1440
+  },
+  "result": {
+    "browser": "Chrome/157.0.8103.39",
+    "facts": {
+      "forms": 0,
+      "height": 900,
+      "images": 1,
+      "lang": "es-es",
+      "links": 2,
+      "ready": "complete",
+      "title": "Un momento…",
+      "url": "https://accounts.netpilot.io/sign-in?redirect_url=https%3A%2F%2Fapp.netpilot.io%2F",
+      "width": 1440
+    },
+    "health": null,
+    "title": "Un momento…",
+    "url": "https://accounts.netpilot.io/sign-in?redirect_url=https%3A%2F%2Fapp.netpilot.io%2F"
+  },
+  "summary": "Opened https://accounts.netpilot.io/sign-in: \"Un momento…\".",
+  "confidence": "observed",
+  "authority": "our-run",
+  "environment": {
+    "clean_room": true,
+    "engine": "cdp",
+    "engine_version": "1.3",
+    "host": "windows-x86_64"
+  },
+  "limitations": [
+    {
+      "code": "private_profile",
+      "message": "A fresh private browser: pages behind a login show their signed-out state."
+    }
+  ],
+  "coverage": {
+    "status": "complete",
+    "examined": 1,
+    "total": 1
+  },
+  "locations": [
+    {
+      "kind": "url",
+      "value": "https://accounts.netpilot.io/sign-in"
+    }
+  ],
+  "links": []
+}

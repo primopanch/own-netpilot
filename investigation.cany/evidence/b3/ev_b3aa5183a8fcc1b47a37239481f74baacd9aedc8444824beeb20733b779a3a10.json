@@ -1,0 +1,45 @@
+{
+  "id": "ev_b3aa5183a8fcc1b47a37239481f74baacd9aedc8444824beeb20733b779a3a10",
+  "subject": {
+    "kind": "website",
+    "name": "https://accounts.netpilot.io/sign-in"
+  },
+  "operation": "web_page_states_capture",
+  "params": {
+    "max_states": 4,
+    "width": 390
+  },
+  "result": {
+    "folder": "C:\\Users\\en5ho\\OneDrive\\Desktop\\own-netpilot\\capture\\states-390",
+    "found": 0,
+    "states": [],
+    "url": "https://accounts.netpilot.io/sign-in?redirect_url=https%3A%2F%2Fapp.netpilot.io%2F"
+  },
+  "summary": "https://accounts.netpilot.io/sign-in has no menus, pop-ups, tabs or collapsed sections to open.",
+  "confidence": "observed",
+  "authority": "our-run",
+  "environment": {
+    "clean_room": true,
+    "engine": "cdp",
+    "engine_version": "1.3",
+    "host": "windows-x86_64"
+  },
+  "limitations": [
+    {
+      "code": "first_controls",
+      "message": "Only the first controls found are opened, one at a time; menus inside menus and hover-only menus are not."
+    }
+  ],
+  "coverage": {
+    "status": "complete",
+    "examined": 0,
+    "total": 0
+  },
+  "locations": [
+    {
+      "kind": "url",
+      "value": "https://accounts.netpilot.io/sign-in?redirect_url=https%3A%2F%2Fapp.netpilot.io%2F"
+    }
+  ],
+  "links": []
+}
