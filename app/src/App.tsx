@@ -32,6 +32,9 @@ export function App() {
   const [isVerified, setIsVerified] = useState<boolean>(() => {
     return window.location.search.includes('app=true') || window.location.hash.includes('app');
   });
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(() => {
+    return localStorage.getItem('netpilot_dark_mode') === 'true';
+  });
 
   // 1. Settings state with localStorage persistence
   const [settings, setSettings] = useState<ApiSettings>(() => {
@@ -85,6 +88,11 @@ He preparado como ejemplo activo la topología de **Inter-VLAN Routing (Router-o
     setSettings(newSettings);
     localStorage.setItem('netpilot_anthropic_settings', JSON.stringify(newSettings));
   };
+
+  useEffect(() => {
+    document.documentElement.classList.toggle('dark', isDarkMode);
+    localStorage.setItem('netpilot_dark_mode', String(isDarkMode));
+  }, [isDarkMode]);
 
   // Add context files
   const handleAddFiles = (newFiles: ContextFile[]) => {
@@ -189,6 +197,8 @@ He preparado como ejemplo activo la topología de **Inter-VLAN Routing (Router-o
         onToggleTopologyView={() => setIsTopologyModalOpen(true)}
         isTopologyViewOpen={isTopologyModalOpen}
         onBackToVerification={() => setIsVerified(false)}
+        isDarkMode={isDarkMode}
+        onToggleDarkMode={() => setIsDarkMode(prev => !prev)}
       />
 
       {/* Main Workspace (Sidebar + Chat Area) */}

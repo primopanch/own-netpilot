@@ -27,6 +27,130 @@
   }
 }
 
+/* Dark theme: preserve NetPilot's neutral surfaces and cyan/green/amber accents. */
+.dark body {
+  background-color: #111113;
+  color: #f4f4f5;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #3f3f46;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #52525b;
+}
+
+.dark [class~="bg-[#FFFFFF]"] {
+  background-color: #18181b !important;
+}
+
+.dark [class~="bg-[#F9F9F8]"] {
+  background-color: #111113 !important;
+}
+
+.dark [class~="bg-[#F5F5F3]"],
+.dark [class~="bg-[#FAFAF9]"] {
+  background-color: #202023 !important;
+}
+
+.dark [class~="bg-[#F4F4F5]"],
+.dark [class~="bg-[#EAEAE8]"] {
+  background-color: #27272a !important;
+}
+
+.dark [class~="bg-[#18181B]"] {
+  background-color: #f4f4f5 !important;
+  color: #18181b !important;
+}
+
+.dark .dark-contrast[class~="bg-[#18181B]"] {
+  background-color: #18181b !important;
+  color: #ffffff !important;
+}
+
+.dark [class~="bg-[#27272A]"] {
+  background-color: #3f3f46 !important;
+}
+
+.dark [class~="bg-[#3F3F46]"] {
+  background-color: #52525b !important;
+}
+
+.dark [class~="text-[#18181B]"],
+.dark [class~="text-[#27272A]"] {
+  color: #f4f4f5 !important;
+}
+
+.dark [class~="text-[#52525B]"] {
+  color: #d4d4d8 !important;
+}
+
+.dark [class~="text-[#71717A]"] {
+  color: #a1a1aa !important;
+}
+
+.dark [class~="text-[#A1A1AA]"] {
+  color: #71717a !important;
+}
+
+.dark [class~="text-[#F4F4F5]"] {
+  color: #f4f4f5 !important;
+}
+
+.dark [class~="border-[#E8E8E5]"],
+.dark [class~="border-[#D4D4D8]"],
+.dark [class~="border-[#E4E4E7]"] {
+  border-color: #3f3f46 !important;
+}
+
+.dark [class~="border-[#18181B]"] {
+  border-color: #f4f4f5 !important;
+}
+
+.dark [class~="hover:bg-[#F5F5F3]"]:hover,
+.dark [class~="hover:bg-[#FAFAF9]"]:hover,
+.dark [class~="hover:bg-[#EAEAE8]"]:hover {
+  background-color: #2f2f34 !important;
+}
+
+.dark [class~="hover:bg-[#27272A]"]:hover {
+  background-color: #e4e4e7 !important;
+}
+
+.dark [class~="hover:text-[#18181B]"]:hover,
+.dark [class~="hover:text-[#000000]"]:hover {
+  color: #ffffff !important;
+}
+
+.dark [class~="placeholder-[#A1A1AA]"]::placeholder {
+  color: #71717a !important;
+}
+
+.dark [class~="focus-within:border-[#18181B]"]:focus-within {
+  border-color: #f4f4f5 !important;
+}
+
+.dark [class~="focus:border-[#18181B]"]:focus {
+  border-color: #f4f4f5 !important;
+}
+
+.dark [class~="bg-[#F0FDF4]"] {
+  background-color: #13261a !important;
+}
+
+.dark [class~="border-[#DCFCE7]"] {
+  border-color: #1f5a32 !important;
+}
+
+.dark [class~="bg-[#FEF3C7]"] {
+  background-color: #332810 !important;
+}
+
+.dark [class~="border-[#FDE68A]"] {
+  border-color: #725b1c !important;
+}
+
 .terminal-scroll::-webkit-scrollbar {
   width: 4px;
 }
