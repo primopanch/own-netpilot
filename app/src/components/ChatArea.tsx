@@ -117,7 +117,7 @@ export const ChatArea: React.FC<Props> = ({
         const blockId = `${msgId}-${idx}`;
 
         return (
-          <div key={idx} className="my-3 rounded-xl overflow-hidden border border-[#27272A] bg-[#18181B] shadow-soft-md text-white">
+          <div key={idx} className="dark-contrast my-3 rounded-xl overflow-hidden border border-[#27272A] bg-[#18181B] shadow-soft-md text-white">
             <div className="px-4 py-2 bg-[#27272A] border-b border-[#3F3F46] flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <Terminal size={14} className="text-[#38BDF8]" />
@@ -246,7 +246,7 @@ export const ChatArea: React.FC<Props> = ({
             }`}
           >
             {msg.role === 'assistant' && (
-              <div className="h-8 w-8 rounded-xl bg-[#18181B] text-white flex items-center justify-center shrink-0 shadow-soft-sm mt-1">
+              <div className="dark-contrast h-8 w-8 rounded-xl bg-[#18181B] text-white flex items-center justify-center shrink-0 shadow-soft-sm mt-1">
                 <Bot size={17} />
               </div>
             )}
@@ -321,7 +321,7 @@ export const ChatArea: React.FC<Props> = ({
         {/* Loading Spinner Indicator */}
         {isLoading && (
           <div className="flex gap-4 max-w-3xl mx-auto">
-            <div className="h-8 w-8 rounded-xl bg-[#18181B] text-white flex items-center justify-center shrink-0 shadow-soft-sm mt-1">
+            <div className="dark-contrast h-8 w-8 rounded-xl bg-[#18181B] text-white flex items-center justify-center shrink-0 shadow-soft-sm mt-1">
               <Bot size={17} />
             </div>
             <div className="p-4 rounded-2xl rounded-tl-none bg-[#FFFFFF] border border-[#E8E8E5] shadow-soft-sm text-xs text-[#52525B] flex items-center gap-3">

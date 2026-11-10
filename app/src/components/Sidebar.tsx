@@ -20,6 +20,7 @@ interface Props {
   onLoadTemplate: (templateName: string) => void;
   isOpen: boolean;
   onCloseMobile: () => void;
+  onOpenWorkspace: () => void;
 }
 
 export const Sidebar: React.FC<Props> = ({
@@ -29,7 +30,8 @@ export const Sidebar: React.FC<Props> = ({
   topology,
   onLoadTemplate,
   isOpen,
-  onCloseMobile
+  onCloseMobile,
+  onOpenWorkspace
 }) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -52,18 +54,20 @@ export const Sidebar: React.FC<Props> = ({
 
     fileList.forEach(file => {
       const isImg = file.type.startsWith('image/');
+      const isPacketTracerBinary = /\.(pkt|pka)$/i.test(file.name);
       const reader = new FileReader();
 
-      if (isImg) {
+      if (isImg || isPacketTracerBinary) {
         reader.onload = () => {
+          const dataUrl = reader.result as string;
           newContextFiles.push({
             id: 'file_' + Math.random().toString(36).substring(2, 9),
             name: file.name,
             size: file.size,
             type: file.type,
-            content: `[Diagrama de red: ${file.name}]`,
-            isImage: true,
-            dataUrl: reader.result as string,
+            content: isImg ? `[Diagrama de red: ${file.name}]` : `[Archivo binario Packet Tracer: ${file.name}]`,
+            isImage: isImg,
+            dataUrl,
             uploadedAt: new Date().toLocaleTimeString(),
           });
           if (newContextFiles.length === fileList.length) {
@@ -152,11 +156,22 @@ export const Sidebar: React.FC<Props> = ({
               Panel de Contexto & Topología
             </h3>
           </div>
+
           <button 
             onClick={onCloseMobile}
             className="lg:hidden text-[#71717A] hover:text-[#18181B] p-1 rounded-md"
           >
             ✕
+          </button>
+        </div>
+
+        <div className="px-4 pt-4">
+          <button
+            onClick={onOpenWorkspace}
+            className="w-full flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl bg-[#18181B] text-white text-xs font-medium shadow-soft-sm hover:bg-[#27272A] transition-colors"
+          >
+            <FileCode size={14} />
+            Abrir laboratorio de archivos
           </button>
         </div>
 

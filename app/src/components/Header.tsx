@@ -8,7 +8,9 @@ import {
   Menu, 
   PlusCircle, 
   ShieldCheck, 
-  Layers
+  Layers,
+  Moon,
+  Sun
 } from 'lucide-react';
 
 interface Props {
@@ -21,6 +23,8 @@ interface Props {
   onToggleTopologyView: () => void;
   isTopologyViewOpen: boolean;
   onBackToVerification?: () => void;
+  isDarkMode: boolean;
+  onToggleDarkMode: () => void;
 }
 
 export const Header: React.FC<Props> = ({
@@ -32,7 +36,9 @@ export const Header: React.FC<Props> = ({
   topology,
   onToggleTopologyView,
   isTopologyViewOpen,
-  onBackToVerification
+  onBackToVerification,
+  isDarkMode,
+  onToggleDarkMode
 }) => {
   const isDeepseek = settings.provider === 'deepseek';
   const isKeyConfigured = isDeepseek
@@ -56,7 +62,7 @@ export const Header: React.FC<Props> = ({
         </button>
 
         <div className="flex items-center gap-2.5">
-          <div className="relative flex items-center justify-center h-9 w-9 rounded-xl bg-[#18181B] text-white shadow-soft-sm">
+          <div className="dark-contrast relative flex items-center justify-center h-9 w-9 rounded-xl bg-[#18181B] text-white shadow-soft-sm">
             <Network size={19} className="text-[#38BDF8]" />
             <span className="absolute -top-1 -right-1 flex h-2.5 w-2.5">
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#16A34A] border-2 border-white" />
@@ -160,6 +166,15 @@ export const Header: React.FC<Props> = ({
           title="Preferencias"
         >
           <Settings size={17} />
+        </button>
+
+        <button
+          onClick={onToggleDarkMode}
+          className="p-2 rounded-xl bg-[#FFFFFF] hover:bg-[#F5F5F3] border border-[#E8E8E5] text-[#71717A] hover:text-[#18181B] transition-colors shadow-soft-sm"
+          title={isDarkMode ? 'Activar modo claro' : 'Activar modo oscuro'}
+          aria-label={isDarkMode ? 'Activar modo claro' : 'Activar modo oscuro'}
+        >
+          {isDarkMode ? <Sun size={17} /> : <Moon size={17} />}
         </button>
 
       </div>

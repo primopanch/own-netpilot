@@ -12,6 +12,7 @@ import { ExportModal } from './components/ExportModal';
 import { SettingsModal } from './components/SettingsModal';
 import { TopologyViewerModal } from './components/TopologyViewerModal';
 import { VerificationPortal } from './components/VerificationPortal';
+import { PacketTracerWorkspaceModal } from './components/PacketTracerWorkspaceModal';
 import { generateDefaultTopology } from './utils/packetTracerExporter';
 import { sendToClaude } from './utils/claudeApi';
 
@@ -31,6 +32,9 @@ const DEFAULT_SETTINGS: ApiSettings = {
 export function App() {
   const [isVerified, setIsVerified] = useState<boolean>(() => {
     return window.location.search.includes('app=true') || window.location.hash.includes('app');
+  });
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(() => {
+    return localStorage.getItem('netpilot_dark_mode') === 'true';
   });
 
   // 1. Settings state with localStorage persistence
@@ -56,6 +60,7 @@ export function App() {
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isExportOpen, setIsExportOpen] = useState(false);
   const [isTopologyModalOpen, setIsTopologyModalOpen] = useState(false);
+  const [isWorkspaceOpen, setIsWorkspaceOpen] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   // 5. Chat messages
@@ -85,6 +90,11 @@ He preparado como ejemplo activo la topología de **Inter-VLAN Routing (Router-o
     setSettings(newSettings);
     localStorage.setItem('netpilot_anthropic_settings', JSON.stringify(newSettings));
   };
+
+  useEffect(() => {
+    document.documentElement.classList.toggle('dark', isDarkMode);
+    localStorage.setItem('netpilot_dark_mode', String(isDarkMode));
+  }, [isDarkMode]);
 
   // Add context files
   const handleAddFiles = (newFiles: ContextFile[]) => {
@@ -189,6 +199,8 @@ He preparado como ejemplo activo la topología de **Inter-VLAN Routing (Router-o
         onToggleTopologyView={() => setIsTopologyModalOpen(true)}
         isTopologyViewOpen={isTopologyModalOpen}
         onBackToVerification={() => setIsVerified(false)}
+        isDarkMode={isDarkMode}
+        onToggleDarkMode={() => setIsDarkMode(prev => !prev)}
       />
 
       {/* Main Workspace (Sidebar + Chat Area) */}
@@ -201,6 +213,7 @@ He preparado como ejemplo activo la topología de **Inter-VLAN Routing (Router-o
           onLoadTemplate={handleLoadTemplate}
           isOpen={isSidebarOpen}
           onCloseMobile={() => setIsSidebarOpen(false)}
+          onOpenWorkspace={() => setIsWorkspaceOpen(true)}
         />
 
         <ChatArea
@@ -233,6 +246,15 @@ He preparado como ejemplo activo la topología de **Inter-VLAN Routing (Router-o
         onClose={() => setIsTopologyModalOpen(false)}
         topology={currentTopology}
         onOpenExport={() => setIsExportOpen(true)}
+      />
+
+      <PacketTracerWorkspaceModal
+        isOpen={isWorkspaceOpen}
+        onClose={() => setIsWorkspaceOpen(false)}
+        files={contextFiles}
+        topology={currentTopology}
+        onTopologyChange={setCurrentTopology}
+        onAddFiles={handleAddFiles}
       />
 
     </div>
