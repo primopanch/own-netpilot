@@ -12,6 +12,7 @@ import { ExportModal } from './components/ExportModal';
 import { SettingsModal } from './components/SettingsModal';
 import { TopologyViewerModal } from './components/TopologyViewerModal';
 import { VerificationPortal } from './components/VerificationPortal';
+import { PacketTracerWorkspaceModal } from './components/PacketTracerWorkspaceModal';
 import { generateDefaultTopology } from './utils/packetTracerExporter';
 import { sendToClaude } from './utils/claudeApi';
 
@@ -59,6 +60,7 @@ export function App() {
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isExportOpen, setIsExportOpen] = useState(false);
   const [isTopologyModalOpen, setIsTopologyModalOpen] = useState(false);
+  const [isWorkspaceOpen, setIsWorkspaceOpen] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   // 5. Chat messages
@@ -211,6 +213,7 @@ He preparado como ejemplo activo la topología de **Inter-VLAN Routing (Router-o
           onLoadTemplate={handleLoadTemplate}
           isOpen={isSidebarOpen}
           onCloseMobile={() => setIsSidebarOpen(false)}
+          onOpenWorkspace={() => setIsWorkspaceOpen(true)}
         />
 
         <ChatArea
@@ -243,6 +246,15 @@ He preparado como ejemplo activo la topología de **Inter-VLAN Routing (Router-o
         onClose={() => setIsTopologyModalOpen(false)}
         topology={currentTopology}
         onOpenExport={() => setIsExportOpen(true)}
+      />
+
+      <PacketTracerWorkspaceModal
+        isOpen={isWorkspaceOpen}
+        onClose={() => setIsWorkspaceOpen(false)}
+        files={contextFiles}
+        topology={currentTopology}
+        onTopologyChange={setCurrentTopology}
+        onAddFiles={handleAddFiles}
       />
 
     </div>

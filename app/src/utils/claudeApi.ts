@@ -13,6 +13,54 @@ export interface ClaudeResponse {
   topology?: NetworkTopology;
 }
 
+const VISION_PROMPT = `Analiza esta imagen de un proyecto de Cisco Packet Tracer como un ingeniero de redes.
+Extrae únicamente información útil para reconstruirlo: dispositivos y modelos, nombres, enlaces y puertos,
+VLANs, direcciones IP, máscaras, gateways y cualquier configuración CLI visible. Si un dato no es legible,
+indícalo como desconocido. Devuelve una especificación técnica estructurada en español, no una opinión.`;
+
+async function extractImageContextForDeepSeek(imageFiles: ContextFile[], settings: ApiSettings): Promise<string> {
+  if (imageFiles.length === 0) return '';
+  if (!settings.apiKey.trim()) {
+    return `\n[AVISO: Hay ${imageFiles.length} imagen(es) adjunta(s), pero DeepSeek no interpreta imágenes y no hay una clave de Anthropic configurada para el puente de visión. Solicita una descripción textual o configura Anthropic como decodificador visual.]\n`;
+  }
+
+  const content: any[] = [];
+  imageFiles.forEach((file) => {
+    const match = file.dataUrl?.match(/^data:image\/([a-zA-Z0-9.+-]+);base64,(.+)$/);
+    if (match) {
+      content.push({
+        type: 'image',
+        source: { type: 'base64', media_type: `image/${match[1]}`, data: match[2] }
+      });
+    }
+  });
+  content.push({ type: 'text', text: VISION_PROMPT });
+
+  const response = await fetch(settings.baseUrl || 'https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+      'x-api-key': settings.apiKey.trim(),
+      'anthropic-version': '2023-06-01',
+      ...(settings.dangerouslyAllowBrowser ? { 'anthropic-dangerous-direct-browser-access': 'true' } : {}),
+    },
+    body: JSON.stringify({
+      model: settings.model || 'claude-3-5-sonnet-20241022',
+      max_tokens: 3000,
+      temperature: 0.1,
+      system: 'Eres un extractor visual para NetPilot. No inventes datos ilegibles.',
+      messages: [{ role: 'user', content }]
+    })
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json().catch(() => ({}));
+    throw new Error(errorData?.error?.message || `Error del puente de visión HTTP ${response.status}`);
+  }
+  const data = await response.json();
+  return `\n[ESPECIFICACIÓN EXTRAÍDA DE IMAGEN PARA DEEPSEEK]\n${data.content?.[0]?.text || 'No se obtuvo texto visual.'}\n[/ESPECIFICACIÓN EXTRAÍDA DE IMAGEN]\n`;
+}
+
 const SYSTEM_PROMPT = `Eres NetPilot AI, el asistente de ingeniería de redes experto en Cisco IOS y Cisco Packet Tracer.
 Tu objetivo es resolver dudas, diseñar topologías completas, diagnosticar fallas de red y guiar paso a paso en laboratorios de CCNA, CCNP y Packet Tracer.
 
@@ -71,6 +119,15 @@ export async function sendToDeepSeek(options: SendMessageOptions): Promise<Claud
       .join('\n\n');
     if (fileTexts) {
       combinedPrompt = `${fileTexts}\n\n${userPrompt}`;
+    }
+  }
+
+  const imageFiles = contextFiles.filter(file => file.isImage && file.dataUrl);
+  if (imageFiles.length > 0) {
+    try {
+      combinedPrompt = `${await extractImageContextForDeepSeek(imageFiles, settings)}\n${combinedPrompt}`;
+    } catch (error: any) {
+      combinedPrompt = `[AVISO: El puente de visión no pudo decodificar las imágenes: ${error.message || 'error desconocido'}]\n\n${combinedPrompt}`;
     }
   }
 

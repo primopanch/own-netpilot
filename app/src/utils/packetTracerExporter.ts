@@ -1,5 +1,5 @@
 import JSZip from 'jszip';
-import { deflate } from 'pako';
+import { deflate, inflate } from 'pako';
 import { NetworkTopology, NetworkDevice, NetworkLink } from '../types/network';
 
 /**
@@ -94,6 +94,85 @@ export function buildPktBinary(topology: NetworkTopology): Uint8Array {
 
   result.set(compressed, header.length + 4);
   return result;
+}
+
+/**
+ * Reads NetPilot's PT5 container and restores its editable topology model.
+ * Native Cisco .pkt/.pka files remain opaque because their format is proprietary.
+ */
+export function parsePacketTracerFile(data: ArrayBuffer): NetworkTopology {
+  const bytes = new Uint8Array(data);
+  const signature = new TextDecoder().decode(bytes.slice(0, 6));
+  if (signature !== 'PT5PKT') {
+    throw new Error('Este archivo no usa el formato PT5 generado por NetPilot. Los .pkt/.pka nativos de Cisco no se pueden editar directamente en el navegador.');
+  }
+
+  const view = new DataView(data);
+  const payloadLength = view.getUint32(6, false);
+  const xml = new TextDecoder().decode(inflate(bytes.slice(10)));
+  if (payloadLength !== new TextEncoder().encode(xml).length) {
+    throw new Error('El archivo Packet Tracer está incompleto o corrupto.');
+  }
+
+  return parsePacketTracerXml(xml);
+}
+
+export function parseCiscoConfig(text: string, fileName = 'Cisco IOS') {
+  const topology = parseAiResponseToTopology(`\`\`\`ios [${fileName.replace(/\.[^.]+$/, '')}]\n${text}\n\`\`\``, fileName);
+  return topology.devices[0];
+}
+
+function parsePacketTracerXml(xml: string): NetworkTopology {
+  const doc = new DOMParser().parseFromString(xml, 'application/xml');
+  if (doc.querySelector('parsererror')) {
+    throw new Error('No se pudo leer la estructura XML de la topología.');
+  }
+
+  const workspace = doc.querySelector('WORKSPACE');
+  const devices = Array.from(doc.querySelectorAll('DEVICE')).map((node) => {
+    const interfaces = Array.from(node.querySelectorAll(':scope > INTERFACES > INTERFACE')).map((iface) => ({
+      name: iface.getAttribute('name') || 'Unknown',
+      shortName: iface.getAttribute('short') || simplifyInterfaceName(iface.getAttribute('name') || ''),
+      ipAddress: iface.querySelector('IP_ADDRESS')?.textContent || undefined,
+      subnetMask: iface.querySelector('SUBNET_MASK')?.textContent || undefined,
+      vlan: Number(iface.querySelector('VLAN')?.textContent) || undefined,
+      status: (iface.getAttribute('status') as 'up' | 'down') || 'up',
+      description: iface.querySelector('DESCRIPTION')?.textContent || undefined,
+    }));
+
+    return {
+      id: node.getAttribute('id') || node.getAttribute('name') || `device_${Math.random()}`,
+      name: node.getAttribute('name') || 'Unnamed',
+      type: (node.getAttribute('type') as NetworkDevice['type']) || 'router',
+      model: node.getAttribute('model') || 'Cisco device',
+      x: Number(node.querySelector('COORDINATES')?.getAttribute('x')) || 100,
+      y: Number(node.querySelector('COORDINATES')?.getAttribute('y')) || 100,
+      interfaces,
+      iosConfig: node.querySelector('STARTUP_CONFIG')?.textContent?.trim() || '',
+    };
+  });
+
+  const links = Array.from(doc.querySelectorAll('LINK')).map((node, index) => {
+    const endpoints = node.querySelectorAll('ENDPOINT1, ENDPOINT2');
+    return {
+      id: node.getAttribute('id') || `link_${index + 1}`,
+      type: (node.getAttribute('type') as NetworkLink['type']) || 'straight',
+      sourceDevice: endpoints[0]?.getAttribute('device') || '',
+      sourcePort: endpoints[0]?.getAttribute('port') || '',
+      targetDevice: endpoints[1]?.getAttribute('device') || '',
+      targetPort: endpoints[1]?.getAttribute('port') || '',
+    };
+  });
+
+  return {
+    id: `imported_${Date.now()}`,
+    name: workspace?.querySelector('NAME')?.textContent || 'Topología importada',
+    description: workspace?.querySelector('DESCRIPTION')?.textContent || '',
+    routingProtocol: workspace?.querySelector('ROUTING_PROTOCOL')?.textContent || undefined,
+    packetTracerVersion: doc.documentElement.getAttribute('version') || '8.2.1',
+    devices,
+    links,
+  };
 }
 
 /**
